@@ -61,10 +61,34 @@
     display: none;
 }
 @media  (max-width: 1000px) {
+    .navbar-list {
+        position: absolute;
+        right: 0;
+        top: 83px; 
+        width: 0px;
+        height: calc(100vh - 60px); 
+        transition: all 0.3s ease-in;
+        overflow: hidden;
+      }
     .navbar-list.open{
        flex-direction: column;
+       width: 270px;
     }
     .menu-icon{
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
     }
+    .navbar-starts {
+        align-items: flex-start;    
+    }
+    .navbar-list ul {
+        display: flex;
+        flex-direction: column;
+      }
+    
+      .navbar-list ul li {
+        margin-right: unset;
+        margin-top: 22px;
+      }
 }

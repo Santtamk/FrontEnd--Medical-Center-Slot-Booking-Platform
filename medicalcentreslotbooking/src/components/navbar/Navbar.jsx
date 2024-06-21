@@ -27,20 +27,21 @@ const Navbar = () => {
             <p>Medify</p>
           </div>
         </div>
-        <div className='menu-icon' onClick={toggleNav}>☰</div>
-        {isOpen && (
-          <ul className={`navbar-list ${open ? "open" : ""}`}>
-            <li>Find Doctors</li>
-            <li>Hospitals</li>
-            <li>Medicines</li>
-            <li>Surgeries</li>
-            <li>Software for Provider</li>
-            <li>Facilities</li>
-            <li>
-              <button>My Bookings</button>
-            </li>
-          </ul>
-        )}
+
+        <div className="menu-icon" onClick={toggleNav}>
+          ☰
+        </div>
+        <ul className={`navbar-list ${isOpen && "open"}`}>
+          <li>Find Doctors</li>
+          <li>Hospitals</li>
+          <li>Medicines</li>
+          <li>Surgeries</li>
+          <li>Software for Provider</li>
+          <li>Facilities</li>
+          <li>
+            <button>My Bookings</button>
+          </li>
+        </ul>
       </nav>
     </div>
   );
