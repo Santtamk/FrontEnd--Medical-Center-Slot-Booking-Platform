@@ -6,7 +6,10 @@ function App() {
 
   return (
     <>
+     <div className='navAndHero'>
       <Navbar />
+
+     </div>
     </>
   )
 }

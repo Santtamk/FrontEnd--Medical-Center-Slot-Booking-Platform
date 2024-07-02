@@ -66,13 +66,14 @@
         right: 0;
         top: 83px; 
         width: 0px;
-        height: calc(100vh - 60px); 
-        transition: all 0.3s ease-in;
+        height: auto; 
+        gap: -1rem;
         overflow: hidden;
       }
     .navbar-list.open{
        flex-direction: column;
        width: 270px;
+       gap: 0;
     }
     .menu-icon{
         display: flex;
