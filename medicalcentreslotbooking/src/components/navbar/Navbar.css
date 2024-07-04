@@ -67,14 +67,18 @@
         top: 83px; 
         width: 0px;
         height: auto; 
-        gap: -1rem;
+        /* gap: 2rem; */
         overflow: hidden;
       }
     .navbar-list.open{
        flex-direction: column;
        width: 270px;
-       gap: 0;
+       gap: 1rem;
+       background-color: #FFFFFF;
     }
+    .navbar-list.open :hover{
+        background: linear-gradient(81deg, #E7F0FF 9.01%, rgba(232, 241, 255, 0.47) 89.11%);
+     }
     .menu-icon{
         display: flex;
         flex-direction: column;
