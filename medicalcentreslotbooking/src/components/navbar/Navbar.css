@@ -1,5 +1,15 @@
-
+.navbar-header{
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center; 
+    position: relative;
+    background-color: #2AA7FF;
+}
 .navbar-header p {
+    animation: moveText 20s linear infinite;
     background-color: #2AA7FF;
     color: #FFFFFF;
     width: 100%;
@@ -13,7 +23,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 7rem 1rem 7rem;
+    padding: 1rem;
 }
 .navbar-logo{
    display: flex;
@@ -24,6 +34,9 @@
 .navbar-logo p:first-child {
     color: #FFFFFF;
     background-color: #2AA8FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 23px;
     height: 23.02px;
     text-align: center;
@@ -97,3 +110,42 @@
         margin-top: 22px;
       }
 }
+
+@media screen and (min-width: 640px) {
+    .navbar-starts{
+        padding: 1rem;
+    }
+}
+@media  screen and  (min-width: 768px) {
+    .navbar-starts{
+        padding: 1rem 2rem;
+    }
+}
+@media  screen and  (min-width: 1024px) {
+    .navbar-starts{
+        padding: 1rem 7rem;
+    }
+    .navbar-header p {
+        animation: none;
+    }
+}
+
+
+
+@keyframes moveText {
+    0% {
+        transform: translateX(100%);
+        opacity: 1;
+      }
+      50% {
+        transform: translateX(-100%);
+        opacity: 1;
+      }
+      51% {
+        /* opacity: 0; */
+      }
+      100% {
+        transform: translateX(100%);
+        /* opacity: 0; */
+      }
+  }
