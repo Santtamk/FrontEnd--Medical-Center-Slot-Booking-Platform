@@ -16,6 +16,7 @@ export default {
       'navy': '#1B3C74',
       'light-grey': '#5C6169',
       'offWhite': 'linear-gradient(81deg, #E7F0FF 9.01%, rgba(232, 241, 255, 0.47) 89.11%)',
+      'searchColor':'#F0F0F0',
     },
   },
   plugins: [],
