@@ -16,7 +16,7 @@ const HeroSection = () => {
         <button className="text-white bg-sky rounded-lg w-44 h-12 text-base font-medium">Find Centers</button>
       </div>
       <div className="flex justify-center items-center md:justify-items-center	md:items-center">
-        <img src="./heroImage.png" alt="HeroImage" className="object-contain"/>
+        <img src="./heroImage.png" alt="HeroImage" className="object-contain "/>
       </div>
     </div>
   );

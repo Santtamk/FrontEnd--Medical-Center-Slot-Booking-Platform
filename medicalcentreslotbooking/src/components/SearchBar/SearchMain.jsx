@@ -30,7 +30,7 @@ const SearchMain = () => {
         <p className="font-medium	text-xl py-4">You may be looking for</p>
         <div>
           <div className="flex flex-col justify-center items-center gap-4 md:grid md:grid-cols-2 lg:flex lg:flex-row lg:flex-wrap">
-            <div className="flex flex-col flex justify-center items-center bg-white-off rounded-md py-4 hover:border-2 hover:border-sky hover:bg-sky-400 text-light-grey2 hover:text-sky w-52	">
+            <div className="flex flex-col flex w-52 *:justify-center items-center bg-white-off border-2 border-transparent rounded-md py-4 hover:border-2 hover:border-sky hover:bg-sky-400 text-light-grey2 hover:text-sky 	">
               <LiaUserNurseSolid className=" h-12	w-11 text-sky"/>
               <p className="text-lg font-normal">Doctors</p>
             </div>
