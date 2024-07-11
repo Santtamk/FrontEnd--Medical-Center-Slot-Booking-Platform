@@ -6,17 +6,18 @@ import { Autoplay, Pagination } from 'swiper/modules';
 
 const Swiper1 = () => {
   return (
-    <div className='mt-20 mb-20 flex justify-center items-center'>
+    <div className='mt-20 mb-10 flex justify-center items-center'>
       <Swiper
-        // spaceBetween={1}
         slidesPerView={3}
         loop={true}
-        pagination={{ clickable: true }}
+        pagination={{ 
+          el: '.pagination',
+          clickable: true }}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
         }}
-        modules={[Autoplay]}
+        modules={[Autoplay,Pagination]}
         breakpoints={{
           0: {
             slidesPerView: 1,
@@ -60,6 +61,7 @@ const Swiper1 = () => {
             className="slide-image"
           />
         </SwiperSlide>
+        <div className="pagination flex gap-4 items-center justify-center mt-10 cursor-pointer"></div>
       </Swiper>
     </div>
   );
