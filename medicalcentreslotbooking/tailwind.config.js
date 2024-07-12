@@ -19,6 +19,7 @@ export default {
       'offWhite': 'linear-gradient(81deg, #E7F0FF 9.01%, rgba(232, 241, 255, 0.47) 89.11%)',
       'searchColor':'#F0F0F0',
       'white-off':'#FAFBFE',
+
     },
   },
   plugins: [],

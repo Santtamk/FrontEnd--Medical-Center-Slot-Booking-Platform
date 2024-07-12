@@ -11,7 +11,8 @@ const Swiper2 = () => {
             <p className="font-semibold	text-5xl text-navy">Our Medical Specialist</p>
         </div>
         <Swiper
-          slidesPerView={3}
+          slidesPerView={'auto'}
+          // spaceBetween={-350}
           loop={true}
           pagination={{
             el: ".pagination",
@@ -23,14 +24,20 @@ const Swiper2 = () => {
           }}
           modules={[Pagination, Autoplay]}
           breakpoints={{
-            0: {
+            // 0: {
+            //   slidesPerView: 1,
+            // },
+            600: {
               slidesPerView: 1,
+              spaceBetween: 1
             },
             768: {
+              // spaceBetween: 0,
               slidesPerView: 2,
             },
             1024: {
               slidesPerView: 3,
+              spaceBetween:-350,
             },
           }}
           className="mySwiper"
@@ -42,10 +49,10 @@ const Swiper2 = () => {
               className="slide-image"
             />
             <div className="-mt-7">
-              <h2 className="text-lg font-medium text-center">
+              <h2 className="text-2xl font-normal text-center text-navy">
                 Dr. Ahmad Khan
               </h2>
-              <p className="text-sm font-normal text-center">Neurologist</p>
+              <p className="text-base font-medium text-center text-sky">Neurologist</p>
             </div>
           </SwiperSlide>
           <SwiperSlide className="flex flex-col justify-center items-center">
@@ -55,10 +62,23 @@ const Swiper2 = () => {
               className="slide-image"
             />
             <div className="-mt-7">
-              <h2 className="text-lg font-medium text-center">
+              <h2 className="text-2xl font-normal text-center text-navy">
                 Dr. Heena Sachdeva
               </h2>
-              <p className="text-sm font-normal text-center">Orthopadics</p>
+              <p className="text-base font-medium text-center text-sky">Orthopadics</p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-col justify-center items-center">
+            <img
+              src="/Doctors/doctor2.png"
+              alt="Project"
+              className="slide-image"
+            />
+            <div className="-mt-7">
+              <h2 className="text-2xl font-normal text-center text-navy">
+                Dr. Ahmad Khan
+              </h2>
+              <p className="text-base font-medium text-center text-sky">Neurologist</p>
             </div>
           </SwiperSlide>
           <SwiperSlide className="flex flex-col justify-center items-center">
@@ -68,10 +88,10 @@ const Swiper2 = () => {
               className="slide-image"
             />
             <div className="-mt-7">
-              <h2 className="text-lg font-medium text-center">
+              <h2 className="text-2xl font-normal text-center text-navy">
                 Dr. Ankur Sharma
               </h2>
-              <p className="text-sm font-normal text-center">Medicine</p>
+              <p className="text-base font-medium text-center text-sky">Medicine</p>
             </div>
           </SwiperSlide>
           <SwiperSlide className="flex flex-col justify-center items-center">
@@ -81,10 +101,23 @@ const Swiper2 = () => {
               className="slide-image"
             />
             <div className="-mt-7">
-              <h2 className="text-lg font-medium text-center">
+              <h2 className="text-2xl font-normal text-center text-navy">
                 Dr. Heena Sachdeva
               </h2>
-              <p className="text-sm font-normal text-center">Orthopadics</p>
+              <p className="text-base font-medium text-center text-sky">Orthopadics</p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-col justify-center items-center">
+            <img
+              src="/Doctors/doctor3.png"
+              alt="Project"
+              className="slide-image"
+            />
+            <div className="-mt-7">
+              <h2 className="text-2xl font-normal text-center text-navy">
+                Dr. Heena Sachdeva
+              </h2>
+              <p className="text-base font-medium text-center text-sky">Orthopadics</p>
             </div>
           </SwiperSlide>
           <div className="pagination flex gap-4 items-center justify-center mt-10 cursor-pointer"></div>
