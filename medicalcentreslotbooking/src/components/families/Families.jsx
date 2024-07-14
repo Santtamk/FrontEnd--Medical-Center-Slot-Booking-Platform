@@ -12,7 +12,7 @@ const Families = () => {
                 Our Families
                 </div>
                 <p className="text-light-grey font-medium	text-base">
-                We will work with you to develop individualised care plans, including management of chronic diseases. If we cannot assist, we can provide referrals or advice about the type of practitioner you require. We treat all enquiries sensitively and in the strictest confidence.
+                We will work with you to develop individualized care plans, including management of chronic diseases. If we cannot assist, we can provide referrals or advice about the type of practitioner you require. We treat all enquiries sensitively and in the strictest confidence.
                 </p>
             </div>
             <div className="pt-4 flex items-center justify-center lg:w-6/12 md:w-6/12">

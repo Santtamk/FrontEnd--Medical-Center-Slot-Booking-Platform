@@ -2,6 +2,7 @@ import './App.css'
 import Blog from './components/blog/Blog'
 import MidCaring from './components/caringMid/MidCaring'
 import Families from './components/families/Families'
+import Faq from './components/faq/Faq'
 import HeroSection from './components/heroSection/HeroSection'
 import Navbar from './components/navbar/Navbar'
 import SearchMain from './components/SearchBar/SearchMain'
@@ -25,6 +26,7 @@ function App() {
       <MidCaring />
       <Blog />
       <Families />
+      <Faq />
     </>
   )
 }
