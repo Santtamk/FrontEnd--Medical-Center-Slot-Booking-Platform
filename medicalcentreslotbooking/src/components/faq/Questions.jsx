@@ -14,7 +14,7 @@ const Questions = ({ question }) => {
   return (
     <div>
       <div>
-        <div className="text-center text-navy text-lg font-semibold	flex cursor-pointer" onClick={toggle}>
+        <div className=" text-navy text-lg font-semibold	flex cursor-pointer" onClick={toggle}>
           <div>{question}</div>
           <div className="flex justify-center items-center text-sky pl-4">
             <FaPlus />
@@ -31,9 +31,9 @@ const Questions = ({ question }) => {
   );
 };
 
-
 Questions.Prototypes={
     question: Prototypes.string,
  };
 
 export default Questions;
+
