@@ -4,20 +4,32 @@ import { PiHospital } from "react-icons/pi";
 import { RiHospitalLine } from "react-icons/ri";
 import { BiSolidCapsule } from "react-icons/bi";
 import { PiAmbulance } from "react-icons/pi";
+import { useState } from "react";
 
-const SearchMain = () => {
+const SearchMain = ({ fetchData }) => {
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+
+  
+  const getHospital = (e) => {
+    e.preventDefault();
+    fetchData(city, state);
+    setCity('');
+    setState('');
+  }
+  
   return (
     <div className="bg-white  flex justify-center items-center flex-col -mt-20 relative pt-6 mx-4 md:mx-7 rounded-lg shadow-2xl lg:mx-28 lg:-mt-40">
-      <div className="flex justify-center items-center flex-col gap-7 lg:flex-row">
+      <form className="flex justify-center items-center flex-col gap-7 lg:flex-row" onSubmit={getHospital}>
         <input
           type="text"
           className="bg-searchColor h-12	w-72 relative rounded-lg focus:outline-none focus:border-sky focus:ring-sky focus:ring-1"
-          placeholder="  &#x1F50D;&#xFE0E;  State"
+          placeholder="  &#x1F50D;&#xFE0E;  State" onChange={e => setState(e.target.value)}
         />
         <input
           type="text"
           className="bg-searchColor h-12	w-72 relative rounded-lg focus:outline-none focus:border-sky focus:ring-sky focus:ring-1"
-          placeholder="  &#x1F50D;&#xFE0E;  City"
+          placeholder="  &#x1F50D;&#xFE0E;  City"  onChange={e => setCity(e.target.value)}
         />
         <button className="text-white bg-sky rounded-lg w-32 h-12 text-base font-medium flex justify-center items-center gap-2">
           <span>
@@ -25,7 +37,7 @@ const SearchMain = () => {
           </span>
           <span>Search</span>
         </button>
-      </div>
+      </form>
       <div className="flex flex-col text-center py-10">
         <p className="font-medium	text-xl py-4">You may be looking for</p>
         <div>
