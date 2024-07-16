@@ -6,8 +6,8 @@ const Faq = () => {
   
   return (
     <div>
-      <div>
-        <div>
+      <div className="md:px-10 md:py-5">
+        <div className="md:px-10">
           <div className="text-center text-sky font-semibold	text-base	pb-5">
             Get Your Answer
           </div>

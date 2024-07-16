@@ -1,4 +1,5 @@
 import './App.css'
+import DownloadApp from './components/appStore/DownloadApp'
 import Blog from './components/blog/Blog'
 import MidCaring from './components/caringMid/MidCaring'
 import Families from './components/families/Families'
@@ -27,6 +28,7 @@ function App() {
       <Blog />
       <Families />
       <Faq />
+      <DownloadApp />
     </>
   )
 }
