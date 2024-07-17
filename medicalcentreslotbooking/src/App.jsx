@@ -16,6 +16,7 @@ import axios from 'axios';
 
 function App() {
   const URL = "https://meddata-backend.onrender.com/"
+  const [allStates, setAllStates] = useState([])
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -32,16 +33,30 @@ function App() {
       setLoading(false);
     }
   }
-  // useEffect(() => {
-  //   fetchdata();
-  // },[])
-  
-console.log(data)
+
+  useEffect(() => {
+    const fetchStates = async () => {
+      setLoading(true);
+      try{
+        const response = await axios.get(`${URL}states`);
+        setAllStates(response.data); 
+      }catch(error){
+        setError(error);
+      }finally{
+        setLoading(false);
+      }
+    }
+    fetchStates()
+  },[])
+
+    console.log(allStates)
+    // console.log(data)
   return (
     <>
       <Navbar />
-      <HeroSection />
-      <SearchMain fetchData={fetchData}/>
+      <HeroSection /> 
+      {loading && <div className="text-center text-base font-medium">Loading Hospitals</div>}
+      <SearchMain fetchData={fetchData} allStates={allStates}/>
       <Swiper1 />
       <Specialisation />
       <Swiper2 />

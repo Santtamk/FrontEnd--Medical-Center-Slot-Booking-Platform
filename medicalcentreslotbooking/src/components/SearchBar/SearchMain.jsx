@@ -5,8 +5,10 @@ import { RiHospitalLine } from "react-icons/ri";
 import { BiSolidCapsule } from "react-icons/bi";
 import { PiAmbulance } from "react-icons/pi";
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
-const SearchMain = ({ fetchData }) => {
+
+const SearchMain = ({ fetchData, allStates }) => {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
 
@@ -17,15 +19,26 @@ const SearchMain = ({ fetchData }) => {
     setCity('');
     setState('');
   }
+
+  console.log(state)
   
   return (
     <div className="bg-white  flex justify-center items-center flex-col -mt-20 relative pt-6 mx-4 md:mx-7 rounded-lg shadow-2xl lg:mx-28 lg:-mt-40">
       <form className="flex justify-center items-center flex-col gap-7 lg:flex-row" onSubmit={getHospital}>
-        <input
+        <select
+          name="state" id="state"
           type="text"
-          className="bg-searchColor h-12	w-72 relative rounded-lg focus:outline-none focus:border-sky focus:ring-sky focus:ring-1"
-          placeholder="  &#x1F50D;&#xFE0E;  State" onChange={e => setState(e.target.value)}
-        />
+          className="bg-searchColor h-12	text-black w-72 relative rounded-lg focus:outline-none focus:border-sky focus:ring-sky focus:ring-1"
+          onChange={e => setState(e.target.value)} required
+        >
+          <option value="" className="text-gray-500" disabled>  &#x1F50D;&#xFE0E;  {' '}  State</option>
+          {allStates.map(state => {
+            return (
+              <option key={state.id} value={state.name}>{state.name}</option>
+            )
+          })}
+        </select>
+
         <input
           type="text"
           className="bg-searchColor h-12	w-72 relative rounded-lg focus:outline-none focus:border-sky focus:ring-sky focus:ring-1"
@@ -67,6 +80,16 @@ const SearchMain = ({ fetchData }) => {
       </div>
     </div>
   );
+};
+
+SearchMain.propTypes = {
+  allStates: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  fetchData: PropTypes.func.isRequired,
 };
 
 export default SearchMain;
