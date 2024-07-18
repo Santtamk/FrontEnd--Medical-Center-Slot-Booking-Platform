@@ -4,7 +4,7 @@ import SearchSection from '../SearchBar/SearchSection'
 import Result from './Result'
 import PropTypes from 'prop-types';
 
-const FindDoctorsPage = ({ fetchData, allStates, searchStates, selectedState, resultData, searchResult }) => {
+const FindDoctorsPage = ({ fetchData, allStates, searchStates, selectedState, resultData, searchResult, valueCity, valueState }) => {
     const [stateInResult, setStateInResult] = useState('');
     const [cityInResult, setCityInResult] = useState('');
 
@@ -18,7 +18,7 @@ const FindDoctorsPage = ({ fetchData, allStates, searchStates, selectedState, re
             <SearchSection fetchData={fetchData} allStates={allStates} searchStates={searchStates} selectedState={selectedState} searchResult={searchResult} resultData={resultData} showStateNameInResult={showStateNameInResult}/>
         </div>
         <div>
-            <Result  resultData={resultData} stateInResult={stateInResult} cityInResult={cityInResult}/>
+            <Result  resultData={resultData} stateInResult={stateInResult} cityInResult={cityInResult} city={valueCity} state={valueState}/>
         </div>
     </div>
   )
@@ -37,6 +37,8 @@ FindDoctorsPage.propTypes = {
     showStateNameInResult: PropTypes.func.isRequired,
     searchResult: PropTypes.bool.isRequired,
     resultData: PropTypes.array.isRequired,
+    valueCity: PropTypes.string.isRequired,
+    valueState: PropTypes.string.isRequired,
   };
 
 export default FindDoctorsPage

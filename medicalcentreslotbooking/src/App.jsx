@@ -22,6 +22,8 @@ function App() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [valueCity, setValueCity] = useState('');
+  const [valueState, setValueState] = useState('');
   const [searchResult, setSearchResult] = useState(false);
 
   //toggle in search
@@ -30,6 +32,8 @@ function App() {
   const fetchData = async (city, state) => {
     setSwitchTOFindDoctor(true);
     setLoading(true);
+    setValueCity(city);
+    setValueState(state);
     try {
       const response = await axios.get(
         `${URL}data/?state=${state}&city=${city}`
@@ -97,6 +101,8 @@ function App() {
           selectedState={selectedState}
           searchResult={searchResult}
           resultData={data}
+          valueCity={valueCity}
+          valueState={valueState}
         />
       )}
       <Faq />
