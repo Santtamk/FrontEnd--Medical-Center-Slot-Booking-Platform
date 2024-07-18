@@ -31,7 +31,7 @@ const Navbar = () => {
         <div className="menu-icon" onClick={toggleNav}>
           ☰
         </div>
-        <ul className={`navbar-list ${isOpen && "open"}`}>
+        <ul className={`navbar-list ${isOpen && "open"} z-40`}>
           <li>Find Doctors</li>
           <li>Hospitals</li>
           <li>Medicines</li>
