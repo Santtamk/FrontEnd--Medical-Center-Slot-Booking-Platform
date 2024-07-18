@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import DownloadApp from "./components/appStore/DownloadApp";
 import Blog from "./components/blog/Blog";
@@ -25,6 +25,7 @@ function App() {
   const [valueCity, setValueCity] = useState('');
   const [valueState, setValueState] = useState('');
   const [searchResult, setSearchResult] = useState(false);
+  const findDoctorsPageRef = useRef(null);
 
   //toggle in search
   const [switchToFindDoctor, setSwitchTOFindDoctor] = useState(false);
@@ -48,28 +49,40 @@ function App() {
 
   useEffect(() => {
     const fetchStates = async () => {
+      setLoading(true)
       try {
         const response = await axios.get(`${URL}states`);
         setAllStates(response.data);
       } catch (error) {
         setError(error);
+      }finally {
+        setLoading(false);
       }
     };
     fetchStates();
   }, []);
 
   const searchStates = async (state) => {
+    setLoading(true);
     try {
       const response = await axios.get(`${URL}cities/${state}`);
       setSelectedState(response.data);
     } catch (error) {
       setError(error);
+    }finally {
+      setLoading(false);
     }
   };
 
+  useEffect(() => {
+    if (switchToFindDoctor && findDoctorsPageRef.current) {
+      findDoctorsPageRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [switchToFindDoctor]);
+
   // console.log(searchStates);
   // console.log(selectedState)
-  console.log("final data", data);
+  // console.log("final data", data);
 
   return (
     <>
@@ -95,6 +108,7 @@ function App() {
         </div>
       ) : (
         <FindDoctorsPage
+        ref={findDoctorsPageRef}
           fetchData={fetchData}
           allStates={allStates}
           searchStates={searchStates}
@@ -103,6 +117,8 @@ function App() {
           resultData={data}
           valueCity={valueCity}
           valueState={valueState}
+          loading={loading}
+          
         />
       )}
       <Faq />
