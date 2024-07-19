@@ -1,9 +1,15 @@
 import { FaThumbsUp } from "react-icons/fa";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
-
 import PropTypes from "prop-types";
+import { useState } from "react";
+import Calendar from "./Calendar";
 
 const Result = ({ resultData, city, state }) => {
+  const [showCalendar, setShowCalendar] = useState(null);
+
+  const toggleCalendar = (name) => {
+      setShowCalendar(prevState => (prevState === name ? null : name));
+  };
   return (
     <div className="py-16 bg-white-off px-4 md:px-8 lg:px-32">
       <div className="text-black font-medium text-2xl">
@@ -25,9 +31,10 @@ const Result = ({ resultData, city, state }) => {
             <div className="flex flex-col gap-5 lg:w-2/3">
               {resultData.map((item) => {
                 return (
+                  <div key={item["Provider ID"]} className="bg-white">
                   <div
-                    key={item["Provider ID"]}
-                    className="bg-white py-5 rounded-lg shadow-2xl flex px-4 md:py-8 gap-2 "
+                    
+                    className=" py-5 rounded-lg shadow-2xl flex px-4 md:py-8 gap-2 "
                   >
                     <div className="md:w-1/5 md:flex md:justify-center lg:flex lg:justify-center">
                       <div className="rounded-full bg-sky-light p-4 md:flex md:justify-center md:items-center w-24	h-24 hidden md:block">
@@ -65,12 +72,20 @@ const Result = ({ resultData, city, state }) => {
                         <p className="text-green text-sm	font-medium	">
                           Available Today
                         </p>
-                        <button className="text-white bg-sky rounded-lg w-52	 h-10 text-base font-medium">
-                          Book FREE Center Visit
+                        <button className="text-white bg-sky rounded-lg w-52	 h-10 text-base font-medium" 
+                        onClick={() => toggleCalendar(item["Hospital Name"])}>
+                          {showCalendar === item["Hospital Name"] ? "Close" : "Book FREE Center Visit"}
                         </button>
                       </div>
                     </div>
                   </div>
+                  <hr className="text-light-grey2 mx-4"/>
+                  <div>
+                    {showCalendar === item["Hospital Name"] && 
+                      <Calendar />
+                    }
+                  </div>
+                  </div>      
                 );
               })}
             </div>
