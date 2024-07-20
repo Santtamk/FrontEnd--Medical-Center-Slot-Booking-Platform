@@ -14,10 +14,14 @@ import TimeSlot from "./TimeSlot";
 const Calendar = () => {
   let [weekDates, setWeekDates] = useState([]);
   const [selectedDate, setSelectedDate] = useState(false);
+  const [timeSlots, setTimeSlots] = useState({});
+  const [selectedTimes, setSelectedTimes] = useState({});
 
-  let Morning = ['11:00 AM']
-  let Afternoon = ['12:00 PM', '12:30 PM', '01:30 PM', '02:00 PM', '02:30 PM']
-  let Evening = ['06:00 PM', '06:30 PM', '07:00 PM', '07:30 PM']
+  const defaultTimeSlots = {
+    Morning: ["11:00 AM"],
+    Afternoon: ["12:00 PM", "12:30 PM", "01:30 PM", "02:00 PM", "02:30 PM"],
+    Evening: ["06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM"],
+  };
 
   useEffect(() => {
     const today = new Date();
@@ -45,6 +49,7 @@ const Calendar = () => {
       "December",
     ];
     let dates = [];
+    let slots = {};
     for (let i = 0; i < 7; i++) {
       let currentDate = new Date(today);
       currentDate.setDate(today.getDate() + i);
@@ -52,20 +57,33 @@ const Calendar = () => {
       const dayName = daysOfWeek[currentDate.getDay()];
       const day = currentDate.getDate();
       const monthName = monthNames[currentDate.getMonth()];
-      dates.push(`${dayName}, ${day} ${monthName}`);
+      const dateString = `${dayName}, ${day} ${monthName}`;
+      dates.push(dateString);
+
+      slots[dateString] = { ...defaultTimeSlots };
     }
     setWeekDates(dates);
+    setTimeSlots(slots);
   }, []);
 
-  const showSlots = () => {
-    setSelectedDate(!selectedDate)
-  }
+  const showSlots = (day) => {
+    setSelectedDate((prevState) => (prevState === day ? null : day));
+  };
+  console.log(selectedDate);
 
+  const handleSlideChange = (swiper) => {
+    const activeIndex = swiper.activeIndex;
+    setSelectedDate(weekDates[activeIndex]);
+  };
 
+  const saveSelectedTime = (date, period, time) => {
+    setSelectedTimes((prevSelectedTimes) => ({
+      ...prevSelectedTimes,
+      [date]: { ...prevSelectedTimes[date], [period]: time },
+    }));
+  };
 
-  
-
-  
+  console.log(`SelectedTimes:`, selectedTimes)
 
   return (
     <>
@@ -86,15 +104,18 @@ const Calendar = () => {
             slidesPerView: 3,
           },
         }}
+        onSlideChange={handleSlideChange}
       >
         {weekDates.length > 0 ? (
           weekDates.map((day, index) => (
-       
-            <SwiperSlide key={index} className="bg-white flex items-center justify-center py-4 " >
-              <div className="cursor-pointer" onClick={showSlots}>
-                <div className="font-normal	 text-base	">
-                {day}
-                </div>
+            <SwiperSlide
+              key={index}
+              className={`flex items-center justify-center py-4 flex-col gap-5 ${
+                selectedDate === day ? "bg-sky !text-white-off " : "bg-white"
+              }`}
+            >
+              <div className={`cursor-pointer `} onClick={() => showSlots(day)}>
+                <div className="font-normal	 text-base	">{day}</div>
                 <div className="font-normal	text-xs	text-green">
                   15 Slots Available
                 </div>
@@ -104,16 +125,35 @@ const Calendar = () => {
         ) : (
           <SwiperSlide>No dates available</SwiperSlide>
         )}
-        
       </Swiper>
-      {selectedDate && 
-            <div className="flex flex-col px-4 gap-4 justify-center py-5 shadow-2xl">
-              <TimeSlot period="Morning" times={Morning} />
-             <hr className="text-light-grey2 mx-4"/>
-              <TimeSlot period="Afternoon" times={Afternoon} />
-             <hr className="text-light-grey2 mx-4"/>
-              <TimeSlot period="Evening" times={Evening} />
-            </div>}
+
+      {selectedDate && (
+        <div className="flex flex-col px-4 gap-4 justify-center py-5 shadow-2xl w-full">
+          <TimeSlot
+            period="Morning"
+            times={timeSlots[selectedDate]?.Morning || []}
+            selectedDate={selectedDate}
+            saveSelectedTime={saveSelectedTime}
+            selectedTime={selectedTimes[selectedDate]?.Morning}
+          />
+          <hr className="text-light-grey2 mx-4" />
+          <TimeSlot
+            period="Afternoon"
+            times={timeSlots[selectedDate]?.Afternoon || []}
+            selectedDate={selectedDate}
+            saveSelectedTime={saveSelectedTime}
+            selectedTime={selectedTimes[selectedDate]?.Afternoon}
+          />
+          <hr className="text-light-grey2 mx-4" />
+          <TimeSlot
+            period="Evening"
+            times={timeSlots[selectedDate]?.Evening || []}
+            selectedDate={selectedDate}
+            saveSelectedTime={saveSelectedTime}
+            selectedTime={selectedTimes[selectedDate]?.Evening}
+          />
+        </div>
+      )}
     </>
   );
 };

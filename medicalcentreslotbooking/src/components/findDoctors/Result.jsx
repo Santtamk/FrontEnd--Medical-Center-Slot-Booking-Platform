@@ -1,11 +1,14 @@
-import { FaThumbsUp } from "react-icons/fa";
+
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import Calendar from "./Calendar";
+import HospitalView from "./HospitalView";
+import { TbRuler2 } from "react-icons/tb";
 
 const Result = ({ resultData, city, state }) => {
   const [showCalendar, setShowCalendar] = useState(null);
+  const [showAvailableCalendar, setShowAvailableCalendar] = useState(true);
 
   const toggleCalendar = (name) => {
       setShowCalendar(prevState => (prevState === name ? null : name));
@@ -32,57 +35,13 @@ const Result = ({ resultData, city, state }) => {
               {resultData.map((item) => {
                 return (
                   <div key={item["Provider ID"]} className="bg-white">
-                  <div
-                    
-                    className=" py-5 rounded-lg shadow-2xl flex px-4 md:py-8 gap-2 "
-                  >
-                    <div className="md:w-1/5 md:flex md:justify-center lg:flex lg:justify-center">
-                      <div className="rounded-full bg-sky-light p-4 md:flex md:justify-center md:items-center w-24	h-24 hidden md:block">
-                        <img
-                          src="./hospital.png"
-                          alt="hospital"
-                          className="w-12	h-16"
-                        />
-                      </div>
-                    </div>
-                    <div className="md:flex md:flex-row md:w-4/5 md:justify-evenly">
-                      <div className="">
-                        <h3 className="font-semibold	text-xl	text-sky">
-                          {item["Hospital Name"]}
-                        </h3>
-                        <p className="text-sm	font-bold	">
-                          {item.City},{item.State}
-                        </p>
-                        <p className="text-light-grey font-normal	text-sm	">
-                          {item["Hospital Type"]}
-                        </p>
-                        <p>
-                          <span className="font-bold	text-sm	text-green">FREE</span>{" "}
-                          <span className="line-through text-light-grey font-normal	text-sm	">
-                            ₹500 Consultation fee at clinic
-                          </span>{" "}
-                        </p>
-                        <div className=" bg-green text-white flex items-center text-sm	font-bold	h-3.5	w-10 px-2 py-3 rounded-lg gap-1">
-                          <FaThumbsUp />
-                          <div className="pt-1">5</div>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-col gap-4 pt-3 md:justify-end">
-                        <p className="text-green text-sm	font-medium	">
-                          Available Today
-                        </p>
-                        <button className="text-white bg-sky rounded-lg w-52	 h-10 text-base font-medium" 
-                        onClick={() => toggleCalendar(item["Hospital Name"])}>
-                          {showCalendar === item["Hospital Name"] ? "Close" : "Book FREE Center Visit"}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                    <HospitalView item={item} toggleCalendar={toggleCalendar} showCalendar={showCalendar} 
+                    // showAvailableCalendar={showAvailableCalendar}
+                    />
                   <hr className="text-light-grey2 mx-4"/>
                   <div>
                     {showCalendar === item["Hospital Name"] && 
-                      <Calendar />
+                      <Calendar hospital={item["Hospital Name"]}/>
                     }
                   </div>
                   </div>      
