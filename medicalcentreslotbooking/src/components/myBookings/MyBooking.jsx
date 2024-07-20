@@ -18,8 +18,8 @@ const MyBooking = () => {
             </div>
             
         </div>
-        
-        <HospitalView />
+        {}
+        <HospitalView  />
 
     </div>
   )

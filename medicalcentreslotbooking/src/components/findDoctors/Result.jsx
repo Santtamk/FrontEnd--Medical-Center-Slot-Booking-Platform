@@ -4,15 +4,21 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import Calendar from "./Calendar";
 import HospitalView from "./HospitalView";
-import { TbRuler2 } from "react-icons/tb";
 
 const Result = ({ resultData, city, state }) => {
   const [showCalendar, setShowCalendar] = useState(null);
   const [showAvailableCalendar, setShowAvailableCalendar] = useState(true);
+  const [bookingDetails, setBookingDetails] = useState(null);
+
 
   const toggleCalendar = (name) => {
       setShowCalendar(prevState => (prevState === name ? null : name));
   };
+  const handleBooking = (hospital, date, time) => {
+    setBookingDetails({ hospital, date, time });
+  };
+
+
   return (
     <div className="py-16 bg-white-off px-4 md:px-8 lg:px-32">
       <div className="text-black font-medium text-2xl">
@@ -36,12 +42,12 @@ const Result = ({ resultData, city, state }) => {
                 return (
                   <div key={item["Provider ID"]} className="bg-white">
                     <HospitalView item={item} toggleCalendar={toggleCalendar} showCalendar={showCalendar} 
-                    // showAvailableCalendar={showAvailableCalendar}
+                    showAvailableCalendar={showAvailableCalendar}
                     />
                   <hr className="text-light-grey2 mx-4"/>
                   <div>
                     {showCalendar === item["Hospital Name"] && 
-                      <Calendar hospital={item["Hospital Name"]}/>
+                      <Calendar hospital={item["Hospital Name"]} onBooking={handleBooking}/>
                     }
                   </div>
                   </div>      

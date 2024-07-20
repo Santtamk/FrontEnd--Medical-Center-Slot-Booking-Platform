@@ -11,7 +11,7 @@ import { Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
 import TimeSlot from "./TimeSlot";
 
-const Calendar = () => {
+const Calendar = ({ hospital, handleBooking }) => {
   let [weekDates, setWeekDates] = useState([]);
   const [selectedDate, setSelectedDate] = useState(false);
   const [timeSlots, setTimeSlots] = useState({});
