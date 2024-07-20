@@ -8,14 +8,18 @@ import HospitalView from "./HospitalView";
 const Result = ({ resultData, city, state }) => {
   const [showCalendar, setShowCalendar] = useState(null);
   const [showAvailableCalendar, setShowAvailableCalendar] = useState(true);
-  const [bookingDetails, setBookingDetails] = useState(null);
+  const [bookingDetails, setBookingDetails] = useState({});
 
 
   const toggleCalendar = (name) => {
       setShowCalendar(prevState => (prevState === name ? null : name));
   };
   const handleBooking = (hospital, date, time) => {
-    setBookingDetails({ hospital, date, time });
+    const newBookingDetails = { hospital, date, time };
+    setBookingDetails(newBookingDetails);
+    // Saving to local storage
+    localStorage.setItem('bookingDetails', JSON.stringify(newBookingDetails));
+    console.log(`Booking made for ${hospital} on ${date} at ${time}`);
   };
 
 
@@ -47,7 +51,7 @@ const Result = ({ resultData, city, state }) => {
                   <hr className="text-light-grey2 mx-4"/>
                   <div>
                     {showCalendar === item["Hospital Name"] && 
-                      <Calendar hospital={item["Hospital Name"]} onBooking={handleBooking}/>
+                      <Calendar hospital={item} handleBooking={handleBooking}/>
                     }
                   </div>
                   </div>      

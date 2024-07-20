@@ -10,7 +10,6 @@ const HospitalView = ({
   time,
   day,
 }) => {
-  console.log("showAvailableCalendar:", showAvailableCalendar);
 
   return (
     <div>

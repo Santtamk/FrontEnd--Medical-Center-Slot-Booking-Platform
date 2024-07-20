@@ -1,5 +1,6 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import PropTypes from "prop-types";
 
 // Import Swiper styles
 import "swiper/css";
@@ -81,9 +82,15 @@ const Calendar = ({ hospital, handleBooking }) => {
       ...prevSelectedTimes,
       [date]: { ...prevSelectedTimes[date], [period]: time },
     }));
+    if(handleBooking) {
+      handleBooking(hospital, date, time);
+      console.log(`Booking made on ${date} at ${time}`);
+    }else{
+      console.log("Booking handle not provided");
+    }
   };
 
-  console.log(`SelectedTimes:`, selectedTimes)
+  // console.log(`SelectedTimes:`, selectedTimes)
 
   return (
     <>
@@ -158,4 +165,13 @@ const Calendar = ({ hospital, handleBooking }) => {
   );
 };
 
+
+Calendar.propTypes = {
+  hospital: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  handleBooking: PropTypes.func.isRequired,
+};
 export default Calendar;
