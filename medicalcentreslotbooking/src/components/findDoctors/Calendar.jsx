@@ -26,15 +26,6 @@ const Calendar = ({ hospital, handleBooking }) => {
 
   useEffect(() => {
     const today = new Date();
-    const daysOfWeek = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
     const monthNames = [
       "January",
       "February",
@@ -54,11 +45,10 @@ const Calendar = ({ hospital, handleBooking }) => {
     for (let i = 0; i < 7; i++) {
       let currentDate = new Date(today);
       currentDate.setDate(today.getDate() + i);
-
-      const dayName = daysOfWeek[currentDate.getDay()];
+      const year = currentDate.getFullYear()
       const day = currentDate.getDate();
       const monthName = monthNames[currentDate.getMonth()];
-      const dateString = `${dayName}, ${day} ${monthName}`;
+      const dateString = `${day} ${monthName} ${year}`;
       dates.push(dateString);
 
       slots[dateString] = { ...defaultTimeSlots };

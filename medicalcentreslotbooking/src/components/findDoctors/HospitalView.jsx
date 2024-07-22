@@ -2,14 +2,22 @@ import { FaThumbsUp } from "react-icons/fa";
 import PropTypes from "prop-types";
 
 const HospitalView = ({
-  item,
+  hospitalItem,
+  bookingItem,
   showCalendar,
   toggleCalendar,
   showAvailableCalendar,
   showBookingsView,
-  time,
-  day,
+  dateItem,
+  timeItem,
 }) => {
+
+  let item= hospitalItem || bookingItem
+
+  console.log('mybookings:', item)
+  console.log('item.City',item.City)
+  console.log('dateItem:', dateItem)
+  console.log('showBookingsView',showBookingsView)
 
   return (
     <div>
@@ -61,13 +69,13 @@ const HospitalView = ({
               <div
                 className={`border cursor-pointer border-sky rounded bg-gray-100 text-sky w-20	h-8	flex items-center justify-center`}
               >
-                {time}
+                {timeItem}
                 {/* 10:30AM */}
               </div>
               <div
                 className={`border cursor-pointer border-green rounded bg-gray-100 text-green w-28	h-8	flex items-center justify-center`}
               >
-                {day}
+                {dateItem}
                 {/* 20 April 2024 */}
               </div>
             </div>
@@ -83,7 +91,11 @@ HospitalView.propTypes = {
   showCalendar: PropTypes.string,
   toggleCalendar: PropTypes.func.isRequired,
   showAvailableCalendar: PropTypes.bool.isRequired,
-  showBookingsView: PropTypes.bool,
+  showBookingsView: PropTypes.bool.isRequired,
+  hospitalItem: PropTypes.array,
+  bookingItem: PropTypes.array,
+  dateItem: PropTypes.array,
+  timeItem: PropTypes.array,
 };
 
 export default HospitalView;

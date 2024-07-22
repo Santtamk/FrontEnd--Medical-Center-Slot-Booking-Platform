@@ -8,7 +8,7 @@ import HospitalView from "./HospitalView";
 const Result = ({ resultData, city, state }) => {
   const [showCalendar, setShowCalendar] = useState(null);
   const [showAvailableCalendar, setShowAvailableCalendar] = useState(true);
-  const [bookingDetails, setBookingDetails] = useState({});
+  // const [bookingDetails, setBookingDetails] = useState({});
 
 
   const toggleCalendar = (name) => {
@@ -16,9 +16,13 @@ const Result = ({ resultData, city, state }) => {
   };
   const handleBooking = (hospital, date, time) => {
     const newBookingDetails = { hospital, date, time };
-    setBookingDetails(newBookingDetails);
+
+    const existingBookingDetails = JSON.parse(localStorage.getItem('bookingDetails')) || [];
+
+    const updatedBookingDetails = [...existingBookingDetails, newBookingDetails]
+    // setBookingDetails(newBookingDetails);
     // Saving to local storage
-    localStorage.setItem('bookingDetails', JSON.stringify(newBookingDetails));
+    localStorage.setItem('bookingDetails', JSON.stringify(updatedBookingDetails));
     console.log(`Booking made for ${hospital} on ${date} at ${time}`);
   };
 
@@ -45,7 +49,7 @@ const Result = ({ resultData, city, state }) => {
               {resultData.map((item) => {
                 return (
                   <div key={item["Provider ID"]} className="bg-white">
-                    <HospitalView item={item} toggleCalendar={toggleCalendar} showCalendar={showCalendar} 
+                    <HospitalView hospitalItem={item} toggleCalendar={toggleCalendar} showCalendar={showCalendar} 
                     showAvailableCalendar={showAvailableCalendar}
                     />
                   <hr className="text-light-grey2 mx-4"/>

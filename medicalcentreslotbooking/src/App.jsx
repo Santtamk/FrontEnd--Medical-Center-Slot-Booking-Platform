@@ -14,6 +14,7 @@ import Swiper1 from "./components/swiper1/Swiper1";
 import Swiper2 from "./components/swiper1/Swiper2";
 import axios from "axios";
 import FindDoctorsPage from "./components/findDoctors/FindDoctorsPage";
+import MyBooking from "./components/myBookings/MyBooking";
 
 function App() {
   const URL = "https://meddata-backend.onrender.com/";
@@ -121,6 +122,7 @@ function App() {
           
         />
       )}
+      <MyBooking />
       <Faq />
       <DownloadApp />
       <Footer />
