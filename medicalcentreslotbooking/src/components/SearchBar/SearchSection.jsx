@@ -1,12 +1,13 @@
 import { useState } from "react";
 import PropTypes from 'prop-types';
 import { IoSearch } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const SearchSection = ({ fetchData, allStates, searchStates, selectedState, showStateNameInResult }) => {
 
     const [city, setCity] = useState('');
   const [state, setState] = useState('');
-
+  const navigate = useNavigate();
 
   const changeState = (e) => {
     setState(e.target.value);
@@ -19,6 +20,7 @@ const SearchSection = ({ fetchData, allStates, searchStates, selectedState, show
     e.preventDefault();
     fetchData(city, state);
     showStateNameInResult(state, city);
+    navigate('/find-doctors');
   }
 
    // console.log('state', state)

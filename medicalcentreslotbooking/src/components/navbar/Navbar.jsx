@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Navbar.css";
 import { IoShieldCheckmark } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,26 +21,28 @@ const Navbar = () => {
       </div>
       <nav className="navbar-starts">
         <div>
+        <Link to="/">
           <div className="navbar-logo">
             <p>
               <IoShieldCheckmark />
             </p>
             <p>Medify</p>
           </div>
+        </Link>
         </div>
 
         <div className="menu-icon" onClick={toggleNav}>
           ☰
         </div>
         <ul className={`navbar-list ${isOpen && "open"} z-40`}>
-          <li>Find Doctors</li>
+          <li><Link to='/find-doctors'>Find Doctors</Link></li>
           <li>Hospitals</li>
           <li>Medicines</li>
           <li>Surgeries</li>
           <li>Software for Provider</li>
           <li>Facilities</li>
           <li>
-            <button>My Bookings</button>
+            <button> <Link to="/my-bookings">My Bookings</Link></button>
           </li>
         </ul>
       </nav>

@@ -8,6 +8,8 @@ import SearchSection from "./SearchSection";
 
 
 const SearchMain = ({ fetchData, allStates, searchStates, selectedState }) => {
+
+  
   
   return (
     <div className="bg-white  flex justify-center items-center flex-col -mt-20 relative pt-6 mx-4 md:mx-7 rounded-lg shadow-2xl lg:mx-28 lg:-mt-40">

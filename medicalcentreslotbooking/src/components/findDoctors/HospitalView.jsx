@@ -14,10 +14,10 @@ const HospitalView = ({
 
   let item= hospitalItem || bookingItem
 
-  console.log('mybookings:', item)
-  console.log('item.City',item.City)
-  console.log('dateItem:', dateItem)
-  console.log('showBookingsView',showBookingsView)
+  // console.log('mybookings:', item)
+  // console.log('item.City',item.City)
+  // console.log('dateItem:', dateItem)
+  // console.log('showBookingsView',showBookingsView)
 
   return (
     <div>

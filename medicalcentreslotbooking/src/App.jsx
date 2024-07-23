@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import DownloadApp from "./components/appStore/DownloadApp";
 import Blog from "./components/blog/Blog";
@@ -86,12 +87,12 @@ function App() {
   // console.log("final data", data);
 
   return (
-    <>
-      {/* {loading && <div className="text-center text-base font-medium">Loading Hospitals</div>} */}
-
+    <Router>
+      
       <Navbar />
-      {!switchToFindDoctor ? (
-        <div>
+      <Routes>
+      <Route  path='/' element={
+        <>
           <HeroSection />
           <SearchMain
             fetchData={fetchData}
@@ -99,6 +100,11 @@ function App() {
             searchStates={searchStates}
             selectedState={selectedState}
             searchResult={searchResult}
+            showStateNameInResult={(state, city) => {
+              setSwitchTOFindDoctor(true);
+              setValueState(state);
+              setValueCity(city);
+            }}
           />
           <Swiper1 />
           <Specialisation />
@@ -106,27 +112,38 @@ function App() {
           <MidCaring />
           <Blog />
           <Families />
-        </div>
-      ) : (
-        <FindDoctorsPage
-        ref={findDoctorsPageRef}
-          fetchData={fetchData}
-          allStates={allStates}
-          searchStates={searchStates}
-          selectedState={selectedState}
-          searchResult={searchResult}
-          resultData={data}
-          valueCity={valueCity}
-          valueState={valueState}
-          loading={loading}
-          
-        />
-      )}
-      <MyBooking />
-      <Faq />
+          <Faq />
+        </>
+       } /> 
+       <Route path="/find-doctors" element={
+        <>
+         <FindDoctorsPage
+           ref={findDoctorsPageRef}
+             fetchData={fetchData}
+             allStates={allStates}
+             searchStates={searchStates}
+             selectedState={selectedState}
+             searchResult={searchResult}
+             resultData={data}
+             valueCity={valueCity}
+             valueState={valueState}
+             loading={loading}
+             showStateNameInResult={(state, city) => {
+              setValueState(state);
+              setValueCity(city);
+            }}
+             
+           />
+           <Faq />
+        </>
+      } />
+        <Route path="/my-bookings" element={
+          <MyBooking />
+        } />
+        </Routes>
       <DownloadApp />
       <Footer />
-    </>
+    </Router>
   );
 }
 
