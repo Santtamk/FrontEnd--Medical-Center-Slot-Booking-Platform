@@ -34,7 +34,7 @@ const Navbar = () => {
         <div className="menu-icon cursor-pointer" onClick={toggleNav}>
           ☰
         </div>
-        <ul className={`navbar-list ${isOpen && "open"} z-40 !bg-light-grey2 shadow-xl rounded-sm py-5`}>
+        <ul className={`navbar-list ${isOpen && "open"} z-40 !bg-light-grey2 lg:!bg-white lg:shadow-none shadow-xl rounded-sm py-5`}>
           <li><Link to='/find-doctors'>Find Doctors</Link></li>
           <li>Hospitals</li>
           <li>Medicines</li>
