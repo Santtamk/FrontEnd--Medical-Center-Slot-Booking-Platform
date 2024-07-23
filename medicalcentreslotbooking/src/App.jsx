@@ -100,11 +100,7 @@ function App() {
             searchStates={searchStates}
             selectedState={selectedState}
             searchResult={searchResult}
-            showStateNameInResult={(state, city) => {
-              setSwitchTOFindDoctor(true);
-              setValueState(state);
-              setValueCity(city);
-            }}
+            loading={loading}
           />
           <Swiper1 />
           <Specialisation />
@@ -128,11 +124,6 @@ function App() {
              valueCity={valueCity}
              valueState={valueState}
              loading={loading}
-             showStateNameInResult={(state, city) => {
-              setValueState(state);
-              setValueCity(city);
-            }}
-             
            />
            <Faq />
         </>

@@ -9,6 +9,7 @@ const FindDoctorsPage = ({ loading, fetchData, allStates, searchStates, selected
     const [cityInResult, setCityInResult] = useState('');
 
     const showStateNameInResult = (state,city) => {
+      console.log('State:', state, 'City:', city);
         return setStateInResult(state), setCityInResult(city);
     }
 
@@ -27,15 +28,13 @@ const FindDoctorsPage = ({ loading, fetchData, allStates, searchStates, selected
 
 
 FindDoctorsPage.propTypes = {
-    allStates: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    selectedState: PropTypes.string.isRequired,
+  allStates: PropTypes.arrayOf(
+    PropTypes.string.isRequired
+  ).isRequired,
+    selectedState: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     fetchData: PropTypes.func.isRequired,
     searchStates: PropTypes.func.isRequired,
-    showStateNameInResult: PropTypes.func.isRequired,
+    showStateNameInResult: PropTypes.func,
     searchResult: PropTypes.bool.isRequired,
     resultData: PropTypes.array.isRequired,
     valueCity: PropTypes.string.isRequired,

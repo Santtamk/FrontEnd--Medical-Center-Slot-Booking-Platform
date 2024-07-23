@@ -96,12 +96,10 @@ const Result = ({ resultData, city, state }) => {
 
 Result.propTypes = {
   resultData: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    })
+    PropTypes.object.isRequired
   ).isRequired,
-  city: PropTypes.string.isRequired,
-  state: PropTypes.string.isRequired,
+  city: PropTypes.string,
+  state: PropTypes.string,
 };
 
 export default Result;

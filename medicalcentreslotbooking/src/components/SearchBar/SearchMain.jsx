@@ -5,15 +5,20 @@ import { RiHospitalLine } from "react-icons/ri";
 import { BiSolidCapsule } from "react-icons/bi";
 import { PiAmbulance } from "react-icons/pi";
 import SearchSection from "./SearchSection";
+// import { useNavigate } from 'react-router-dom';
 
 
-const SearchMain = ({ fetchData, allStates, searchStates, selectedState }) => {
 
-  
-  
+const SearchMain = ({ fetchData, allStates, searchStates, selectedState, loading }) => {
+  // const navigate = useNavigate()
+  // const switchToFindDoctor = () => {
+  //   navigate('/find-doctors')
+  // }
   return (
     <div className="bg-white  flex justify-center items-center flex-col -mt-20 relative pt-6 mx-4 md:mx-7 rounded-lg shadow-2xl lg:mx-28 lg:-mt-40">
-        <SearchSection fetchData={fetchData} allStates={allStates} searchStates={searchStates} selectedState={selectedState}/>
+        <SearchSection fetchData={fetchData} allStates={allStates} searchStates={searchStates} selectedState={selectedState} 
+        loading={loading}
+        />
         <div className="flex flex-col text-center py-10">
           <p className="font-medium	text-xl py-4">You may be looking for</p>
           <div>
@@ -47,14 +52,13 @@ const SearchMain = ({ fetchData, allStates, searchStates, selectedState }) => {
 
 SearchMain.propTypes = {
   allStates: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    })
+    PropTypes.string.isRequired
   ).isRequired,
-  selectedState: PropTypes.string.isRequired,
+  selectedState: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   fetchData: PropTypes.func.isRequired,
   searchStates: PropTypes.func.isRequired,
   searchResult: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default SearchMain;

@@ -159,7 +159,7 @@ const Calendar = ({ hospital, handleBooking }) => {
 Calendar.propTypes = {
   hospital: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
+      name: PropTypes.object.isRequired,
     })
   ).isRequired,
   handleBooking: PropTypes.func.isRequired,

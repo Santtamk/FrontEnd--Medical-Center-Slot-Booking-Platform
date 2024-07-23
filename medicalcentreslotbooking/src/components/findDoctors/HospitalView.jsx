@@ -87,15 +87,15 @@ const HospitalView = ({
 };
 
 HospitalView.propTypes = {
-  item: PropTypes.object.isRequired,
+  item: PropTypes.object,
   showCalendar: PropTypes.string,
-  toggleCalendar: PropTypes.func.isRequired,
-  showAvailableCalendar: PropTypes.bool.isRequired,
-  showBookingsView: PropTypes.bool.isRequired,
-  hospitalItem: PropTypes.array,
-  bookingItem: PropTypes.array,
-  dateItem: PropTypes.array,
-  timeItem: PropTypes.array,
+  toggleCalendar: PropTypes.func,
+  showAvailableCalendar: PropTypes.bool,
+  showBookingsView: PropTypes.bool,
+  hospitalItem: PropTypes.object,
+  bookingItem: PropTypes.object,
+  dateItem: PropTypes.string,
+  timeItem: PropTypes.string,
 };
 
 export default HospitalView;
